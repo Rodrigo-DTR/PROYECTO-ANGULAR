@@ -1,0 +1,48 @@
+<nav class="navbar">
+  <div class="navbar-brand">
+    <a routerLink="/" class="brand-link">Instituto Tecnológico de Orizaba</a>
+  </div>
+
+  <div class="brand-center">
+    <a routerLink="/" class="brand-link-center">
+      <img src="/assets/ITO.png" alt="ITO" class="navbar-logo" />
+    </a>
+  </div>
+
+  <div class="navbar-menu"></div>
+
+  <div class="navbar-user" style="position:relative;">
+    <button #bellBtn *ngIf="usuario" (click)="toggleNotifs()" class="btn-nav btn-bell" title="Notificaciones">
+      🔔 <span *ngIf="notifs.length" class="badge">{{notifs.length}}</span>
+    </button>
+    <div #notifMenu *ngIf="showNotifs" class="dropdown-menu notifs">
+      <div *ngIf="rol==='admin'" class="notif-actions">
+        <button class="btn-primary" (click)="crearNotifsDesdeNoticias()">Agregar notificaciones recientes</button>
+      </div>
+      <div *ngIf="!notifs.length" class="notif-empty">Sin notificaciones</div>
+      <ul *ngIf="notifs.length" class="notif-list">
+        <li *ngFor="let n of notifs" class="notif-item">
+          <div class="title">{{n.titulo}}</div>
+          <div class="msg">{{n.mensaje}}</div>
+          <div class="meta">{{n.categoria}} • {{n.ts | date:'short'}}</div>
+        </li>
+      </ul>
+    </div>
+    <a *ngIf="usuario && rol === 'admin'" routerLink="/admin" class="btn-nav btn-admin">Panel de control</a>
+
+    <div *ngIf="usuario; else anon">
+      <button (click)="toggleMenu()" class="btn-user">👤 {{usuario.nombre}}</button>
+      <div *ngIf="showMenu" class="dropdown-menu">
+        <button (click)="irPerfil()" class="dropdown-item">Modificar Perfil</button>
+        <button (click)="logout()" class="dropdown-item">Cerrar Sesión</button>
+      </div>
+    </div>
+
+    <ng-template #anon>
+      <div class="auth-buttons">
+        <a routerLink="/login" class="btn-primary">Iniciar sesión</a>
+        <a routerLink="/register" class="btn-secondary">Registrarse</a>
+      </div>
+    </ng-template>
+  </div>
+</nav>

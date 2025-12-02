@@ -1,0 +1,90 @@
+<div class="admin-panel-container">
+  <h1>Panel de administración</h1>
+
+  <section class="create-section">
+    <h2>Crear noticia</h2>
+    <form (ngSubmit)="crearNoticia()">
+      <div class="form-group">
+        <label>Título</label>
+        <input [(ngModel)]="titulo" name="titulo" type="text" required />
+      </div>
+
+      <div class="form-group">
+        <label>Contenido</label>
+        <textarea [(ngModel)]="contenido" name="contenido" rows="4" required></textarea>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>Imagen (opcional)</label>
+          <input type="file" accept="image/*" (change)="onImagenChange($event)" />
+          <small>JPG/PNG máximo 2 MB</small>
+        </div>
+
+        <div class="form-group">
+          <label>Archivo adjunto (opcional)</label>
+          <input type="file" (change)="onArchivoChange($event)" />
+          <small>PDF/DOCX máximo 5 MB</small>
+        </div>
+      </div>
+
+      <div class="form-actions">
+        <button type="submit" [disabled]="creating">{{ creating ? 'Creando...' : 'Crear noticia' }}</button>
+      </div>
+    </form>
+  </section>
+
+  <section class="manage-section">
+    <h2>Noticias existentes</h2>
+
+    <div *ngIf="loading">Cargando noticias...</div>
+    <div *ngIf="!loading && noticias.length === 0">No hay noticias registradas.</div>
+
+    <div class="announcements-list" *ngIf="!loading && noticias.length > 0">
+      <article *ngFor="let n of noticias" class="announcement-item">
+        <div class="item-info">
+          <h3>{{ n.titulo }}</h3>
+          <p>{{ n.contenido }}</p>
+          <div class="item-meta">
+            <span>{{ n.fecha | date:'short' }}</span>
+            <span *ngIf="n.imagen_url">Imagen: <a [href]="'http://localhost:3000' + n.imagen_url" target="_blank">Ver</a></span>
+            <span *ngIf="n.archivo_url">Archivo: <a [href]="'http://localhost:3000' + n.archivo_url" target="_blank">Descargar</a></span>
+          </div>
+        </div>
+
+        <div class="item-actions">
+          <button (click)="startEdit(n)">Editar</button>
+          <button (click)="eliminar(n.id)">Eliminar</button>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <div class="edit-modal" *ngIf="editing">
+    <div class="edit-card">
+      <h3>Editar noticia</h3>
+      <div class="form-group">
+        <label>Título</label>
+        <input [(ngModel)]="editTitulo" name="editTitulo" />
+      </div>
+      <div class="form-group">
+        <label>Contenido</label>
+        <textarea [(ngModel)]="editContenido" name="editContenido" rows="4"></textarea>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Imagen nueva</label>
+          <input type="file" accept="image/*" (change)="onEditImagenChange($event)" />
+        </div>
+        <div class="form-group">
+          <label>Archivo nuevo</label>
+          <input type="file" (change)="onEditArchivoChange($event)" />
+        </div>
+      </div>
+      <div class="form-actions">
+        <button (click)="guardarEdicion()">Guardar</button>
+        <button (click)="cancelEdit()">Cancelar</button>
+      </div>
+    </div>
+  </div>
+</div>

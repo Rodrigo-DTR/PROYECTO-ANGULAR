@@ -1,0 +1,41 @@
+<div class="dashboard-container">
+  <section class="dashboard-header">
+    <h1>Mi Panel de Control</h1>
+    <div *ngIf="usuario" class="user-info">
+      <p><strong>Bienvenido, {{ usuario.nombre }}</strong></p>
+      <p class="user-email">{{ usuario.email }}</p>
+    </div>
+  </section>
+
+  <section class="news-section">
+    <h2>Noticias publicadas</h2>
+
+    <div *ngIf="cargando" class="loading">
+      <p>Cargando noticias...</p>
+    </div>
+
+    <div *ngIf="!cargando && noticias.length === 0" class="empty-state">
+      <p>No hay noticias registradas aún.</p>
+    </div>
+
+    <ul *ngIf="!cargando && noticias.length > 0" class="news-list">
+      <li *ngFor="let n of noticias" class="announcement-card">
+        <div class="card-content">
+          <h3>{{ n.titulo }}</h3>
+          <p class="card-preview">{{ n.contenido }}</p>
+
+          <div *ngIf="n.imagen_url || n.archivo_url" class="file-info">
+            <img *ngIf="n.imagen_url" [src]="environment.apiBase + n.imagen_url" alt="Imagen de la noticia" class="news-image" />
+            <a *ngIf="n.archivo_url" [href]="environment.apiBase + n.archivo_url" target="_blank" rel="noreferrer" class="btn-download">
+              Descargar archivo
+            </a>
+          </div>
+
+          <div class="card-meta">
+            <span class="date">{{ formatFecha(n.fecha) }}</span>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </section>
+</div>

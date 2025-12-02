@@ -1,0 +1,131 @@
+.profile-edit-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: calc(100vh - 80px);
+  padding: 40px 20px;
+  background: #f5f5f5;
+}
+.profile-card {
+  background: #ffffff;
+  padding: 40px 50px;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  width: 100%;
+  max-width: 600px;
+}
+
+.profile-card h2 {
+  color: #001F3F;
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 28px;
+}
+
+.profile-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-group label {
+  color: #001F3F;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.form-group input {
+  padding: 12px 14px;
+  border: 1px solid #d0d0d0;
+  border-radius: 6px;
+  font-size: 14px;
+  transition: border-color 0.2s, box-shadow 0.2s, background-color 0.2s;
+  background-color: #fafafa;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #0056b3;
+  box-shadow: 0 0 0 3px rgba(0, 86, 179, 0.15);
+  background-color: #ffffff;
+}
+
+.form-group input[disabled] {
+  background-color: #f0f0f0;
+  cursor: not-allowed;
+}
+
+.form-group small {
+  font-size: 12px;
+  color: #8a8a8a;
+}
+
+.form-section {
+  margin-top: 10px;
+  padding-top: 20px;
+  border-top: 1px solid #ededed;
+}
+
+.form-section h3 {
+  color: #001F3F;
+  font-size: 16px;
+  margin-bottom: 15px;
+}
+
+
+.form-actions {
+  display: flex;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.btn-save,
+.btn-cancel {
+  padding: 12px 18px;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 15px;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.2s;
+  flex: 1;
+}
+
+.btn-save {
+  background-color: #FFD700;
+  color: #001F3F;
+  box-shadow: 0 4px 12px rgba(255, 215, 0, 0.35);
+}
+
+.btn-save:hover {
+  background-color: #FFC300;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(255, 215, 0, 0.45);
+}
+
+.btn-cancel {
+  background-color: #e0e0e0;
+  color: #555555;
+}
+
+.btn-cancel:hover {
+  background-color: #cfcfcf;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+@media (max-width: 768px) {
+  .profile-card {
+    padding: 30px 20px;
+  }
+
+  .form-actions {
+    flex-direction: column;
+  }
+}

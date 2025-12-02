@@ -1,0 +1,35 @@
+.profile-edit-container {
+    display: flex;
+    justify-content: center;
+    padding: 20px
+}
+
+.profile-card {
+    background: #fff;
+    padding: 24px;
+    border-radius: 8px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+    max-width: 600px;
+    width: 100%
+}
+
+.form-actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 12px
+}
+
+.btn-save {
+    background: #FFD700;
+    color: #001F3F;
+    padding: 10px;
+    border-radius: 8px;
+    border: none
+}
+
+.btn-cancel {
+    background: #ddd;
+    padding: 10px;
+    border-radius: 8px;
+    border: none
+}

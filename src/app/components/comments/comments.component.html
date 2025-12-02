@@ -1,0 +1,19 @@
+<div class="comments">
+  <h4>Comentarios</h4>
+  <div class="comment-form">
+    <textarea [(ngModel)]="texto" rows="3" placeholder="Escribe tu comentario..."></textarea>
+    <button (click)="send()" class="btn-primary">Enviar</button>
+  </div>
+  <div *ngIf="loading" class="loading">Cargando...</div>
+  <div *ngIf="!loading && comments.length === 0" class="empty">Sé el primero en comentar</div>
+  <ul class="comment-list">
+    <li *ngFor="let c of comments" class="comment-item">
+      <div class="meta">
+        <span class="author">{{c.usuario?.nombre || 'Anónimo'}}</span>
+        <span class="date">{{c.creadoEn | date:'short'}}</span>
+      </div>
+      <div class="comment-text">{{c.texto}}</div>
+      <button class="btn-danger" (click)="deleteComment(c.id)" *ngIf="isAdmin">Eliminar</button>
+    </li>
+  </ul>
+</div>

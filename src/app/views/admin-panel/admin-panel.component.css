@@ -1,0 +1,25 @@
+.admin-panel-container { padding: 20px; max-width: 1100px; margin: 0 auto; }
+.create-section, .manage-section { background: #fff; padding: 16px; margin-bottom: 20px; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+.form-group { margin-bottom: 12px; }
+.form-group label { display: block; margin-bottom: 4px; font-weight: 500; }
+.form-group input[type="text"],
+.form-group input[type="file"],
+.form-group textarea { width: 100%; padding: 6px 8px; border: 1px solid #ddd; border-radius: 4px; }
+.form-group small { display: block; margin-top: 4px; font-size: 0.85em; color: #999; }
+.form-row { display: flex; gap: 16px; flex-wrap: wrap; }
+.form-row .form-group { flex: 1; min-width: 200px; }
+.form-actions { margin-top: 12px; }
+.form-actions button { padding: 8px 16px; background: #4CAF50; color: white; border: none; border-radius: 4px; cursor: pointer; }
+.form-actions button:disabled { background: #ccc; cursor: not-allowed; }
+.announcements-list { display: flex; flex-direction: column; gap: 12px; }
+.announcement-item { display: flex; justify-content: space-between; align-items: flex-start; padding: 10px; border: 1px solid #eee; border-radius: 6px; background: #fafafa; }
+.item-info { flex: 1; }
+.item-info h3 { margin: 0 0 6px 0; font-size: 1.1em; }
+.item-meta span { display: inline-block; margin-right: 10px; font-size: 0.9em; color: #666; }
+.item-meta a { color: #2196F3; text-decoration: none; }
+.item-actions { display: flex; gap: 8px; }
+.item-actions button { padding: 6px 12px; font-size: 0.9em; border: none; border-radius: 4px; cursor: pointer; }
+.item-actions button:first-child { background: #2196F3; color: white; }
+.item-actions button:last-child { background: #f44336; color: white; }
+.edit-modal { position: fixed; inset: 0; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,0.4); z-index: 1000; }
+.edit-card { background: #fff; padding: 16px; border-radius: 8px; width: 90%; max-width: 600px; box-shadow: 0 4px 16px rgba(0,0,0,0.15); }

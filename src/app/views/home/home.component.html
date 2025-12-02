@@ -1,0 +1,39 @@
+<div class="home-container">
+  <section class="home-banner">
+    <h1>Noticias</h1>
+    <p>"Lo nuevo del Tec en un solo lugar: eventos, anuncios y lo más top. ¡No te pierdas nada!"</p>
+    <a *ngIf="isAdmin" routerLink="/admin" class="btn-primary">Ir a agregar noticias</a>
+  </section>
+
+  <section class="announcements-section">
+    <h2>Noticias recientes</h2>
+
+    <div *ngIf="loading">Cargando noticias...</div>
+
+    <div class="announcements-grid" *ngIf="!loading">
+      <article *ngIf="noticias.length === 0" class="announcement-card empty-card">
+        <div class="card-content">
+          <h3>Sin noticias por ahora</h3>
+          <p class="card-preview">Aún no se han publicado avisos. Vuelve más tarde.</p>
+        </div>
+      </article>
+
+      <article *ngFor="let n of noticias" class="announcement-card">
+        <div *ngIf="n.imagen_url" class="card-image">
+          <img [src]="environment.apiBase + n.imagen_url" alt="Imagen" />
+        </div>
+        <div class="card-content">
+          <h3>{{n.titulo}}</h3>
+          <p class="card-preview">{{n.contenido}}</p>
+          <div class="card-meta">
+            <span>{{ formatFecha(n.fecha) }}</span>
+            <a *ngIf="n.archivo_url" [href]="environment.apiBase + n.archivo_url" target="_blank" class="btn-download">Descargar archivo</a>
+          </div>
+        </div>
+        <div class="card-comments">
+          <app-comments [noticiaId]="n._id || n.id"></app-comments>
+        </div>
+      </article>
+    </div>
+  </section>
+</div>

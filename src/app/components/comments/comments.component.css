@@ -1,0 +1,11 @@
+.comments { border-top: 1px solid #eee; padding-top: 12px; margin-top: 12px; }
+.comment-form { display: flex; gap: 8px; margin-bottom: 12px; align-items: flex-start; }
+.comment-form textarea { flex: 1; resize: vertical; color: #222; background: #fff; border: 1px solid #ccc; border-radius: 6px; padding: 6px; }
+.comment-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; }
+.comment-item { background: #ffffff; border: 1px solid #dcdcdc; padding: 10px; border-radius: 8px; color: #222; }
+.meta { font-size: 12px; color: #555; display: flex; gap: 8px; }
+.comment-text { margin-top: 6px; line-height: 1.4; white-space: pre-wrap; color:#222; }
+.btn-primary { padding: 6px 12px; }
+.btn-danger { margin-top: 6px; }
+.empty { color: #888; }
+.loading { color: #666; }
